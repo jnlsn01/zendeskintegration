@@ -1,0 +1,16 @@
+{
+  "app": {
+    "name": "Coveo For Zendesk",
+    "short_description": "Coveo For Zendesk",
+    "long_description": "Unleash the power of search and relavance with Coveo for Zendesk \n Empower your agents to serve customers better",
+    "installation_instructions": "Simply click install.",
+    "parameters": {
+      "organizationId" : { "label": "Your Coveo Cloud Org" },
+      "apiKey"     : { "label": "API Key", "helpText": "A master API key with impersonate privilege" },
+      "insightPanelFields"    : { "label": "Insight Panel Fields", "helpText": "A semicolon separated list of ticket.field_api_name to be passed with query context on insight panel" },
+      "agentInsightPanelHubName" : { "label": "Insight Panel Search Hub", "helpText": "Search Hub name for Zendesk Insight Panel" },
+      "agentFullSearchHubName" : { "label": "Agent Full Search Hub", "helpText": "Search Hub name for Agent Full Search Page" },
+      "agentTicketPanelHubName": { "label": "Agent Ticket Panel Hub", "helpText": "Search Hub name for Agent Ticket Creation Page" }
+    }
+  }
+}

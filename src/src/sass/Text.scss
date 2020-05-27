@@ -1,0 +1,21 @@
+@import './Variables.scss';
+
+.coveo-label {
+    color: black;
+    font-size: 1em;
+    font-weight: normal;
+}
+
+.coveo-content {
+    color: black;
+    font-size: 1em;
+}
+
+.coveo-link {
+    color: $coveo-blue;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

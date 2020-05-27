@@ -1,0 +1,7 @@
+organizationId: lightspeedincnonproduction1v0s2m47r
+apiKey: xx89db82fa-3193-4cc8-8fed-87b28449d800
+insightPanelFieldsAllowlist: ticket.subject;ticket.description
+insightPanelFieldsBlocklist: 
+agentInsightPanelHubName: ZendeskAgentInsightPanel
+agentFullSearchHubName: ZendeskAgentFullSearch 
+agentTicketPanelHubName: ZendeskTicketPanel

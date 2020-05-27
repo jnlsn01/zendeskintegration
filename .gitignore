@@ -1,0 +1,10 @@
+src/bin
+node_modules
+.idea
+.vscode
+backup
+zendesk-package/assets/searchuiextensions
+zendesk-package/assets/zendesk
+zendesk-package/.zat
+zendesk-package/tmp
+

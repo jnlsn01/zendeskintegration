@@ -1,0 +1,17 @@
+{
+    "author": "Coveo <sandbox_JSUI@coveo.com> (http://source.coveo.com/)",
+    "license": "Apache-2.0",
+    "name": "coveo-for-zendesk",
+    "version": "0.0.1",
+    "description": "Coveo UI Integration within Zendesk",
+    "main": "./src/bin/commonjs/CoveoForZendesk.js",
+    "module": "./src/bin/es6/Index.js",
+    "types": "./src/bin/typings",
+    "scripts": {
+        "build": "cd src && npm run build",
+        "postinstall": "cd src && npm install",
+        "dev": "cd src && npm run dev"
+    },
+    "devDependencies": {
+    }
+}
