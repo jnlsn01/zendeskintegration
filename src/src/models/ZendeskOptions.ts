@@ -21,4 +21,9 @@ export interface ZendeskOptions {
      * Url of the User Profiling Endpoint.
      */
     endpointUrl: string;
+
+    /**
+     * Whether to trigger the first query automatically
+     */
+    autoTriggerQuery: boolean;
 }

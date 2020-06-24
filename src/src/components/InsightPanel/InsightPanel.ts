@@ -10,6 +10,7 @@ import { Dom, IBuildingQueryEventArgs } from 'coveo-search-ui';
 export class InsightPanel {
 
     private ticketContext: {[key: string]: string};
+    private topBarClient: any;
     private root: Dom;
 
     constructor(
@@ -83,33 +84,66 @@ export class InsightPanel {
         return windowHeight/2 + 'px';
     }
 
-    private executeQuery() {
-        Coveo.logSearchEvent(this.root.el, { name: 'CaseInputChange', type: 'Search' }, this.ticketContext);
-        Coveo.executeQuery(this.root.el);
-    }
+    private executeQuery = _.throttle(()=> {
+            Coveo.logSearchEvent(this.root.el, { name: 'CaseInputChange', type: 'Search' }, this.ticketContext);
+            Coveo.executeQuery(this.root.el);
+    }, 2000);
 
-    private async bindCoveoEvents() {
+    private async bindCoveoEvents(requesterEmail: string) {
         var _this = this;
         Coveo.$$(this.root).on('buildingQuery', function(e: Event, args:IBuildingQueryEventArgs) {
             args.queryBuilder.addContext(_this.ticketContext)
+            if (requesterEmail) {
+                args.queryBuilder.userActions = { tagViewsOfUser: requesterEmail };
+            }
         });
+    }
+
+    private setTicketContext(ticketContext: {[key: string]: string}) {
+        this.ticketContext = ticketContext;
+        if (this.topBarClient) {
+            this.topBarClient.trigger('ticket_context_updated', this.ticketContext);
+        }
     }
 
     private async bindZendeskEvents() {
         this.zendeskClient.getClient().on('*.changed', (e:Event) => {
             this.getTicketContext().then((ticketContext) => {
-                this.ticketContext = ticketContext;
+                this.setTicketContext(ticketContext);
                 this.executeQuery();
             })
         });
+
+        this.zendeskClient.getClient().get('instances').then((instancesData: any) => {
+            var instances = instancesData.instances;
+            var guid = Object.keys(instances).filter((instanceGuid: any) => {
+                return instances[instanceGuid].location == 'top_bar';
+            }).join('');
+            return this.zendeskClient.getClient().instance(guid);
+        }).then((topBarClient:any) => {
+            this.topBarClient = topBarClient;
+        });
+
+        this.zendeskClient.getClient().on('top_bar_loaded', () => {
+            this.setTicketContext(this.ticketContext);
+        })
     }
 
-    public async init() {
-        this.ticketContext = await this.getTicketContext();
-        this.bindCoveoEvents();
+    public async init(enableUserActions: boolean) {
+        this.setTicketContext(await this.getTicketContext());
         this.bindZendeskEvents();
         var initializationHandler = new InitializationHandler(this.zendeskClient);
-        initializationHandler.initializeSearchInterface(this.root.el, this.options)
+
+        if (enableUserActions) {
+            var requester =  await this.zendeskClient.getClient().get('ticket.requester');
+            var requesterEmail = requester['ticket.requester'].email
+            this.bindCoveoEvents(requesterEmail);
+            initializationHandler.initializeSearchInterfaceWithUserActions(this.root.el, this.options, requesterEmail);
+        } else {
+            this.bindCoveoEvents(null);
+            initializationHandler.initializeSearchInterface(this.root.el, this.options)
+        }
+
         this.zendeskClient.getClient().invoke('resize', { width: '100%', height: this.computeHeight() });
     }
 

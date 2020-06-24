@@ -1,34 +1,45 @@
 @import '../../sass/Variables.scss';
-@import '../../sass/ResultActionMenu.scss';
 
-.CoveoAttachResult {
-    div {
-        display: inline-block;
+body {
+  margin: 0;
+}
 
-        &.coveo-icon-attach {
-            @extend %icon;
-            fill: $calypso;
+.CoveoSearchInterface {
+
+    .CoveoSearchbox {
+        margin: 0;
+        border: 1px solid $bali-hai;
+
+        .CoveoSearchButton {
+            border: none;
         }
-        &.coveo-icon-attached {
-            @extend %icon;
-            fill: $tangerine;
+
+        .magic-box {
+            border: none;
         }
-        &.coveo-icon-loading {
-            @extend %icon;
-            fill: $calypso;
-            svg {
-                animation: loading 0.8s linear 0s infinite normal running;
+    }
+
+    .coveo-search-section {
+        padding: 0;
+    }
+
+    &.coveo-small-facets {
+        .coveo-dropdown-header-wrapper {
+            a {
+                &.coveo-dropdown-header {
+                    margin-top: 5px;
+                    margin-right: 0;
+                    margin-left: 5px;
+                }
             }
         }
     }
-}
 
-@keyframes loading {
-    from {
-        transform: rotate(0deg);
+    .coveo-results-header {
+        padding: 0;
     }
 
-    to {
-        transform: rotate(360deg);
+    .CoveoResultList {
+        margin: 10px 0 0 0;
     }
 }

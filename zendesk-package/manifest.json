@@ -10,8 +10,9 @@
   "signedUrls": true,
   "location": {
     "support": {
-      "ticket_sidebar": "http://localhost:8101/pages/zendesk",
-      "new_ticket_sidebar": "http://localhost:8101/pages/zendesk"
+      "ticket_sidebar": "https://searchdev.cloud.coveo.com/pages/zendesk?local=true",
+      "new_ticket_sidebar": "https://searchdev.cloud.coveo.com/pages/zendesk?local=true",
+      "top_bar": "https://searchdev.cloud.coveo.com/pages/zendesk?local=true"
     }
   },
   "version": "1.0",
