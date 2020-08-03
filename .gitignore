@@ -1,4 +1,6 @@
-src/bin
+agent/bin
+self-service/bin
+bin
 node_modules
 .idea
 .vscode

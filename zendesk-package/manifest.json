@@ -27,11 +27,6 @@
       "required": true
     },
     {
-      "name": "apiKey",
-      "type": "password",
-      "required": true
-    },
-    {
       "name": "insightPanelFieldsAllowlist",
       "type": "text",
       "required": false
@@ -40,21 +35,6 @@
       "name": "insightPanelFieldsBlocklist",
       "type": "text",
       "required": false
-    },
-    {
-      "name": "agentFullSearchHubName",
-      "type": "text",
-      "required": true
-    },
-    {
-      "name": "agentInsightPanelHubName",
-      "type": "text",
-      "required": true
-    },
-    {
-      "name": "agentTicketPanelHubName",
-      "type": "text",
-      "required": true
     }
   ]
 }
