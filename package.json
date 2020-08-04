@@ -4,14 +4,13 @@
     "name": "coveo-for-zendesk",
     "version": "0.0.1",
     "description": "Coveo UI Integration within Zendesk",
-    "main": "./src/bin/commonjs/CoveoForZendesk.js",
-    "module": "./src/bin/es6/Index.js",
+    "main": "./src/agent/bin/commonjs/CoveoForZendesk.js",
     "types": "./src/bin/typings",
     "scripts": {
-        "build": "cd src && npm run build",
-        "postinstall": "cd src && npm install",
-        "dev": "cd src && npm run dev"
+        "package": "node ./scripts/package.js",
+        "build": "cd agent && npm run build && cd .. && cd self-service && npm run build && cd .. && npm run package"
     },
     "devDependencies": {
+        "ncp": "^2.0.0"
     }
 }

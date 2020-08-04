@@ -1,6 +1,6 @@
 agent/bin
 self-service/bin
-bin
+s3
 node_modules
 .idea
 .vscode

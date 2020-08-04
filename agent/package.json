@@ -19,13 +19,7 @@
         "build-prod-commonjs": "webpack --config ./webpack.config.prod.js",
         "setup": "node ./scripts/setup.js",
         "css": "node ./scripts/css.js",
-        "dev": "node ./scripts/dev.server.js",
-        "watchTest": "karma start ./karma.config.js",
-        "lint": "prettier --check \"./**/*\" --config \".prettierrc.js\" --ignore-path \".prettierignore\"",
-        "lint-fix": "prettier --write \"./**/*\" --config \".prettierrc.js\" --ignore-path \".prettierignore\"",
-        "clean": "rimraf bin",
-        "snyk-protect": "snyk protect",
-        "prepare": "npm run snyk-protect"
+        "dev": "node ./scripts/dev.server.js"
     },
     "pre-commit": [
         "lint-fix"

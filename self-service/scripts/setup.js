@@ -1,16 +1,10 @@
 'use strict';
 const { ncp } = require('ncp');
 const { resolve } = require('path');
-const { mkdirSync, existsSync } = require('fs');
+const { mkdirSync, rmdirSync, existsSync } = require('fs');
 
-const folderToCopy = [{ src: resolve('./pages'), dest: resolve('./bin/pages') }];
-
-if (!existsSync(resolve('./bin'))) {
-    mkdirSync(resolve('./bin'), { recursive: true });
+if (existsSync(resolve('./bin'))) {
+    rmdirSync(resolve('./bin'), { recursive: true });
 }
 
-folderToCopy.forEach(folder =>
-    ncp(folder.src, folder.dest, err => {
-        if (err) throw err;
-    })
-);
+mkdirSync(resolve('./bin'), { recursive: true });
