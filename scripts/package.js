@@ -7,7 +7,7 @@ const folderToCopy = [{ src: resolve('./agent/bin'), dest: resolve('./s3/agent')
                       { src: resolve('./self-service/bin'), dest: resolve('./s3/selfservice') }];
 
 if (existsSync(resolve('./s3'))) {
-    rmdirSync(resolve('./s3'))
+    rmdirSync(resolve('./s3'), { recursive: true})
 }
 
 mkdirSync(resolve('./s3/agent'), { recursive: true });
