@@ -12,8 +12,9 @@
         "lib": ["es2015", "dom", "es2018.promise"],
         "outDir": "./bin/es6",
         "declaration": true,
-        "declarationDir": "./bin/typings"
+        "declarationDir": "./bin/typings",
+        "typeRoots": ["./typings"]
     },
     "include": ["../agent/**/*.ts", "../agent/**/*.json"],
-    "exclude": ["./node_modules"]
+    "exclude": ["./node_modules", "./typings"]
 }
