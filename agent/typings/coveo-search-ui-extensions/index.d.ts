@@ -1,0 +1,1 @@
+declare module 'coveo-search-ui-extensions'

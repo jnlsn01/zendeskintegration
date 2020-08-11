@@ -1,10 +1,9 @@
 agent/bin
 self-service/bin
-bin
+s3
 node_modules
 .idea
 .vscode
-backup
 zendesk-package/assets/searchuiextensions
 zendesk-package/assets/zendesk
 zendesk-package/.zat

@@ -13,19 +13,14 @@
     "scripts": {
         "test": "karma start ./karma.config.js --single-run",
         "testCoverage": "npm run test && cat ./bin/coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls.js",
-        "build": "npm run setup && npm run css && npm run build-es && npm run build-commonjs && npm run build-prod-commonjs",
+        "setup": "npm install",
+        "build": "npm run clean && npm run css && npm run build-es && npm run build-commonjs && npm run build-prod-commonjs",
         "build-es": "tsc -p .",
         "build-commonjs": "webpack --config ./webpack.config.js",
         "build-prod-commonjs": "webpack --config ./webpack.config.prod.js",
-        "setup": "node ./scripts/setup.js",
+        "clean": "node ./scripts/setup.js",
         "css": "node ./scripts/css.js",
-        "dev": "node ./scripts/dev.server.js",
-        "watchTest": "karma start ./karma.config.js",
-        "lint": "prettier --check \"./**/*\" --config \".prettierrc.js\" --ignore-path \".prettierignore\"",
-        "lint-fix": "prettier --write \"./**/*\" --config \".prettierrc.js\" --ignore-path \".prettierignore\"",
-        "clean": "rimraf bin",
-        "snyk-protect": "snyk protect",
-        "prepare": "npm run snyk-protect"
+        "dev": "node ./scripts/dev.server.js"
     },
     "pre-commit": [
         "lint-fix"
