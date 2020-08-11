@@ -8,6 +8,7 @@
     "types": "./src/bin/typings",
     "scripts": {
         "package": "node ./scripts/package.js",
+        "setup": "cd agent && npm run setup && cd .. && cd self-service && npm run setup",
         "build": "cd agent && npm run build && cd .. && cd self-service && npm run build && cd .. && npm run package"
     },
     "devDependencies": {

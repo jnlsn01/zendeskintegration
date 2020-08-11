@@ -26,6 +26,7 @@ pipeline {
                 
                 withDockerContainer(image: "node:lts-alpine", args: "-u root:root") {
                     sh "npm install"
+                    sh "npm run setup"
                     sh "npm run build"
                 }
             }
