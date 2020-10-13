@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "module": "es6",
+        "target": "es6",
+        "noImplicitAny": true,
+        "noUnusedLocals": true,
+        "noImplicitReturns": true,
+        "resolveJsonModule": true,
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "skipLibCheck": true,
+        "lib": ["es2015", "dom", "es2018.promise"],
+        "outDir": "./bin/es6",
+        "declaration": true,
+        "declarationDir": "./bin/typings",
+        "typeRoots": ["./node_modules/@types"]
+    },
+    "include": ["../self-service/**/*.ts", "../self-service/**/*.json"],
+    "exclude": ["node_modules", "types"]
+}
