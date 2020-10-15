@@ -9,7 +9,7 @@ module.exports = {
         path: path.resolve('./bin/commonjs'),
         filename: `[name].js`,
         libraryTarget: 'umd',
-        library: 'CoveoForZendeskSelfService',
+        library: 'CoveoForZendesk',
         publicPath: '/commonjs'
     },
     externals: [
