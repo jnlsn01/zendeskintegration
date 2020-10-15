@@ -19,7 +19,7 @@ pipeline {
                 
                 checkout([
                     $class: 'GitSCM',
-                    branches: [[name: '*/C4ZD-5']],
+                    branches: [[name: 'master']],
                     userRemoteConfigs: [[url: 'https://bitbucket.org/coveord/zendeskintegration',credentialsId:'bitbucket-anti-throttling-02']],
                     clean: true
                 ])
@@ -44,7 +44,7 @@ pipeline {
             steps {
                 withDockerContainer(image: DEPLOY_PIPELINE_IMAGE) {
                     script {
-                        packageName = sh (script: "deployment-package package create", returnStdout: true).trim()
+                        packageName = sh (script: "deployment-package package create --overwrite", returnStdout: true).trim()
                         sh "deployment-package package deploy --package-name ${packageName} --target-environment dev"
                     }
                 }
