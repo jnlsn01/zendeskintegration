@@ -1,16 +1,13 @@
 {
   "app": {
-    "name": "Coveo For Zendesk",
-    "short_description": "Coveo For Zendesk",
-    "long_description": "Unleash the power of search and relavance with Coveo for Zendesk \n Empower your agents to serve customers better",
-    "installation_instructions": "Simply click install.",
+    "name": "Coveo ",
+    "short_description": "Coveo surfaces relevant content and recommendations from any source.",
+    "long_description": "Surface relevant content and recommendations from any source to create a seamless Zendesk experience. Coveo’s Relevance Cloud™ combines connectivity, intelligent search, analytics and machine learning to deliver meaningful customer and employee experiences.\n\n With this integration, Coveo:\n\n - Securely indexes content sources from across the organization and through AI search & recommendations delivers the most relevant results right within Zendesk Support and Guide.\n\n - Out-of-the-box machine learning recommends the most meaningful content to each person, in-context of where they interact, and at scale.\n\n - Tracks complete user journeys across interaction channels to fuel machine learning. This aggregated data over the sum total of journeys provides insight into behavior, knowledge use, content gaps and other support KPIs.\n\n\nCoveo is proven to help companies like Medallia, RingCentral, and Informatica accelerate ROI through improvement of many service‑related KPIs: Case Deflection, Self‑Service Success, Agent Productivity, First Call Resolution, and Average Handling Time.\n\nCoveo is a leader in both the Gartner Magic Quadrant for Insight Engines and the Forrester Wave for Cognitive Search.  Coveo has demonstrated enterprise scalability and results based on deployments at some of the largest leading & innovative technology customers.\n\n# Helpful Resources\n\nSee what our customers are saying: [Digital Heroes]\n\nLearn more on Coveo’s home page\nwww.coveo.com\n\nHave questions about the product or want to see it in action? Feel free to contact us at\n coveoforzendesk@coveo.com\n[Digital Heroes]: <https://www.coveo.com/en/digital-heroes>",
+    "installation_instructions": "Contact a Coveo representative at coveoforzendesk@coveo.com to get started with your Coveo for Zendesk installation.",
     "parameters": {
-      "organizationId" : { "label": "Your Coveo Cloud Org" },
-      "apiKey"     : { "label": "API Key", "helpText": "A master API key with impersonate privilege" },
-      "insightPanelFields"    : { "label": "Insight Panel Fields", "helpText": "A semicolon separated list of ticket.field_api_name to be passed with query context on insight panel" },
-      "agentInsightPanelHubName" : { "label": "Insight Panel Search Hub", "helpText": "Search Hub name for Zendesk Insight Panel" },
-      "agentFullSearchHubName" : { "label": "Agent Full Search Hub", "helpText": "Search Hub name for Agent Full Search Page" },
-      "agentTicketPanelHubName": { "label": "Agent Ticket Panel Hub", "helpText": "Search Hub name for Agent Ticket Creation Page" }
+      "organizationId" : { "label": "ID of your Coveo Cloud Org" },
+      "insightPanelFieldsAllowlist"     : { "label": "Fields Allowlist (optional)", "helpText": "Inclusive list of fields to use for context separated by semicolon. All fields sent by default." },
+      "insightPanelFieldsBlocklist"    : { "label": "Fields Blocklist (optional)", "helpText": "List of fields to exclude from the context separated by semicolon. All fields sent by default." }
     }
   }
 }

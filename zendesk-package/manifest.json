@@ -1,25 +1,22 @@
 {
   "name": "Coveo for Zendesk",
   "author": {
-    "name": "Coveo Solutions Inc.",
-    "email": "zendesk@coveo.com",
-    "url": "https://www.coveo.com/zendesk"
+    "name": "Coveo",
+    "email": "coveoforzendesk@coveo.com",
+    "url": "https://www.coveo.com/en/products/integrations/coveo-for-zendesk"
   },
   "defaultLocale": "en",
-  "private": true,
+  "private": false,
   "signedUrls": true,
   "location": {
     "support": {
-      "ticket_sidebar": "https://searchdev.cloud.coveo.com/pages/zendesk?local=true",
-      "new_ticket_sidebar": "https://searchdev.cloud.coveo.com/pages/zendesk?local=true",
-      "top_bar": "https://searchdev.cloud.coveo.com/pages/zendesk?local=true"
+      "ticket_sidebar": "https://search.cloud.coveo.com/pages/zendesk",
+      "new_ticket_sidebar": "https://search.cloud.coveo.com/pages/zendesk",
+      "top_bar": "https://search.cloud.coveo.com/pages/zendesk"
     }
   },
   "version": "1.0",
   "frameworkVersion": "2.0",
-  "domainWhitelist": [
-    "platform.cloud.coveo.com"
-  ],
   "parameters": [
     {
       "name": "organizationId",
