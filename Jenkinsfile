@@ -17,13 +17,6 @@ pipeline {
             steps {
                 echo "Will publish Zendesk Integration"
                 
-                checkout([
-                    $class: 'GitSCM',
-                    branches: [[name: 'master']],
-                    userRemoteConfigs: [[url: 'https://bitbucket.org/coveord/zendeskintegration',credentialsId:'bitbucket-anti-throttling-02']],
-                    clean: true
-                ])
-                
                 withDockerContainer(image: "node:lts-alpine", args: "-u root:root") {
                     sh "npm install"
                     sh "npm run setup"
@@ -41,6 +34,7 @@ pipeline {
         }
 
         stage("Deploy") {
+            when { branch "master" }
             steps {
                 withDockerContainer(image: DEPLOY_PIPELINE_IMAGE) {
                     script {
