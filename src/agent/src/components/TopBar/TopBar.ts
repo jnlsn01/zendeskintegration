@@ -39,7 +39,6 @@ export class TopBar {
     private async bindZendeskEvents() {
         var _this = this;
         this.zendeskClient.getClient().on('ticket_context_updated', (ticketContext: {[key: string]: string}) => {
-            debugger;
             _this.setTicketContext(ticketContext)
             _this.executeQuery();
         });
