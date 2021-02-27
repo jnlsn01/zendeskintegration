@@ -84,5 +84,7 @@
         "xml2js": "^0.4.23"
     },
     "snyk": true,
-    "dependencies": {}
+    "dependencies": {
+        "@coveord/platform-client": "^15.0.0"
+    }
 }

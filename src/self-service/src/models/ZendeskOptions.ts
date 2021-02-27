@@ -8,6 +8,11 @@ export interface ZendeskOptions {
     APIKey: string;
 
     /**
+     * Coveo Organization Id.
+     */
+    organizationId: string;
+
+    /**
      * URL of the search page (optional).
      */
     searchPageUrl: string;

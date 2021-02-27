@@ -1,4 +1,5 @@
-import { } from 'coveo-search-ui';
+import { } from "coveo-search-ui";
+import { CoveoHostedSearchPage } from "./HostedSearchPage";
 import { ZendeskOptions } from "./models/ZendeskOptions";
 
 export function init(options: ZendeskOptions) {
@@ -6,14 +7,10 @@ export function init(options: ZendeskOptions) {
 }
 
 export class CoveoInitializer {
-
-    constructor(
-        public options: ZendeskOptions
-    ) {
-    }
+    constructor(public options: ZendeskOptions) { }
 
     private computeSearchPageUrl() {
-        if(this.options.searchPageUrl) return this.options.searchPageUrl;
+        if (this.options.searchPageUrl) return this.options.searchPageUrl;
         return '/' + window.location.pathname.split('/').slice(1, 3).join('/') + '/search';
     }
 
@@ -22,7 +19,7 @@ export class CoveoInitializer {
         return window.location.pathname.indexOf(searchPage) >= 0;
     }
 
-    private getOptions():any {
+    private getOptions(): any {
         return this.options.searchOptions ? this.options.searchOptions : {}
     }
 
@@ -30,19 +27,32 @@ export class CoveoInitializer {
         const searchBoxRoot = document.getElementById(this.options.searchBoxId);
         const searchPageRoot = document.getElementById(this.options.searchPageId);
 
-        Coveo.SearchEndpoint.configureCloudV2Endpoint("", this.options.APIKey);
+        Coveo.SearchEndpoint.configureCloudV2Endpoint(
+            this.options.organizationId,
+            this.options.APIKey
+        );
 
+        var searchOptions = this.getOptions();
         if (this.isSearchPage()) {
-            var options = this.getOptions();
-            if(options.externalComponents) {
-                options.externalComponents.push(searchBoxRoot);
+            if (searchOptions.externalComponents) {
+                searchOptions.externalComponents.push(searchBoxRoot);
             } else {
-                options.externalComponents = [searchBoxRoot];
+                searchOptions.externalComponents = [searchBoxRoot];
             }
-            Coveo.init(searchPageRoot, options);
+            Coveo.init(searchPageRoot, searchOptions);
         } else {
             Coveo.initSearchbox(searchBoxRoot, this.computeSearchPageUrl());
         }
+
+        //Pourrait faire un bon système pour la validation des options
+        //TODO pourrait fetch le org id avec l'api key
+        if (this.options.organizationId) {
+            CoveoHostedSearchPage.initializeHostedSearchPages(
+                this.options,
+                searchOptions
+            );
+        } else {
+            console.warn("organizationId option isn't specified");
+        }
     }
 }
-
