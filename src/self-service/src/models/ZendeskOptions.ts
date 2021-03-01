@@ -15,25 +15,25 @@ export interface ZendeskOptions {
     /**
      * URL of the search page (optional).
      */
-    searchPageUrl: string;
+    searchPageUrl?: string;
 
     /**
      * HTML Id of the search box (optional).
      */
-    searchBoxId: string;
+    searchBoxId?: string;
 
     /**
      * HTML Id of the search interface (optional).
      */
-    searchPageId: string;
+    searchPageId?: string;
 
     /**
      * Name of the Search Page (URL).
      */
-    searchPageName: string;
+    searchPageName?: string;
 
     /**
      * Coveo JS UI Options
      */
-    searchOptions: any;
+    searchOptions?: any;
 }

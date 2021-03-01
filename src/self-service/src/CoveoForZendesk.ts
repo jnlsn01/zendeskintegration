@@ -1,6 +1,6 @@
 import { } from "coveo-search-ui";
-import { CoveoHostedSearchPage } from "./HostedSearchPage";
 import { ZendeskOptions } from "./models/ZendeskOptions";
+import { C4ZComponentHelper } from "./components/C4ZComponentHelper";
 
 export function init(options: ZendeskOptions) {
     new CoveoInitializer(options).initCoveo();
@@ -32,27 +32,20 @@ export class CoveoInitializer {
             this.options.APIKey
         );
 
-        var searchOptions = this.getOptions();
+        this.options.searchOptions = this.getOptions();
+        let searchOptions = this.options.searchOptions;
         if (this.isSearchPage()) {
             if (searchOptions.externalComponents) {
-                searchOptions.externalComponents.push(searchBoxRoot);
+               searchOptions.externalComponents.push(searchBoxRoot);
             } else {
                 searchOptions.externalComponents = [searchBoxRoot];
             }
-            Coveo.init(searchPageRoot, searchOptions);
+            if (searchPageRoot)
+                Coveo.init(searchPageRoot, searchOptions);
         } else {
             Coveo.initSearchbox(searchBoxRoot, this.computeSearchPageUrl());
         }
 
-        //Pourrait faire un bon système pour la validation des options
-        //TODO pourrait fetch le org id avec l'api key
-        if (this.options.organizationId) {
-            CoveoHostedSearchPage.initializeHostedSearchPages(
-                this.options,
-                searchOptions
-            );
-        } else {
-            console.warn("organizationId option isn't specified");
-        }
+        C4ZComponentHelper.initComponents(this.options);
     }
 }
