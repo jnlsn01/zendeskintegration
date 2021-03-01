@@ -17,7 +17,7 @@ export class C4ZComponentHelper {
                     await component.init(elem as HTMLElement, options);
                 }
                 catch (ex) {
-                    console.error(`${component.tag}: ${ex}`);
+                    console.error(`${component.tag}: ${ex.message}`);
                 }
             });
             await Promise.all(promises);
