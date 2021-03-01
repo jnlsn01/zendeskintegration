@@ -1,5 +1,5 @@
 import { FormHelper } from "../FormHelper";
-import { C4ZComponent } from "./C4ZComponent";
+import { C4ZDComponent } from "./C4ZDComponent";
 import templateSearchInterface from '../templates/CaseDeflection.html';
 import { ZendeskOptions } from "../Index";
 import { Utils } from "../Utils";
@@ -14,7 +14,7 @@ import { Utils } from "../Utils";
  * data-throttle-time <Optional default=1000>: Throttle time between search queries
  * data-form-id <Optional default=new_request>: id of the form that will be used for the case deflection
  */
-export class CaseDeflection implements C4ZComponent {
+export class CaseDeflection implements C4ZDComponent {
     tag: string = "CoveoCaseDeflection";
 
     public async init(element: HTMLElement, options: ZendeskOptions): Promise<void> {
