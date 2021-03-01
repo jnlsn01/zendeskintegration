@@ -1,7 +1,7 @@
 import PlatformClient from "@coveord/platform-client";
 import { ZendeskOptions } from "../Index";
 import { Utils } from "../Utils";
-import { C4ZComponent } from "./C4ZComponent";
+import { C4ZDComponent } from "./C4ZDComponent";
 
 /**
  * Adds the hosted search page specified by data-page-name as a child of this element
@@ -10,7 +10,7 @@ import { C4ZComponent } from "./C4ZComponent";
  * Attributes:
  * data-page-name <Required>: the name of the hosted search page to be fetched.
  */
-export class CoveoHostedSearchPage implements C4ZComponent {
+export class CoveoHostedSearchPage implements C4ZDComponent {
     tag: string = "CoveoHostedSearchPage";
 
     public async init(element: HTMLElement, options: ZendeskOptions): Promise<void> {

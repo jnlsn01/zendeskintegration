@@ -1,6 +1,6 @@
 import { } from "coveo-search-ui";
 import { ZendeskOptions } from "./models/ZendeskOptions";
-import { C4ZComponentHelper } from "./components/C4ZComponentHelper";
+import { C4ZDComponentHelper } from "./components/C4ZDComponentHelper";
 
 export function init(options: ZendeskOptions) {
     new CoveoInitializer(options).initCoveo();
@@ -46,6 +46,6 @@ export class CoveoInitializer {
             Coveo.initSearchbox(searchBoxRoot, this.computeSearchPageUrl());
         }
 
-        C4ZComponentHelper.initComponents(this.options);
+        C4ZDComponentHelper.initComponents(this.options);
     }
 }
