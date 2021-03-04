@@ -21,14 +21,16 @@ export class CoveoHostedSearchPage implements C4ZDComponent {
         }
 
         //Fetch the search page with the page name
-        let hostedSearchPages = await this.fetchHostedSearchPage(options.APIKey, options.organizationId, pageName);
-        let hostedPage = hostedSearchPages[0];
+        let hostedPageHtml = this.fetchHostedSearchPage(options.APIKey, options.organizationId, pageName).then(hostedSearchPages => {
+            let hostedPage = hostedSearchPages[0];
 
-        if (!(hostedPage && hostedPage.html)) {
-            throw Error(`No hosted search page found with the name ${pageName}`)
-        }
+            if (!(hostedPage && hostedPage.html))
+                throw Error(`No hosted search page found with the name ${pageName}`)
 
-        Utils.initCoveoSearchFromHtml(hostedPage.html, element, options.searchOptions);
+            return hostedPage.html;
+        });
+
+        Utils.initCoveoSearchFromHtml(hostedPageHtml, element, options);
     }
 
     private async fetchHostedSearchPage(token: string, orgId: string, pageName: string): Promise<SearchPageModel[]> {

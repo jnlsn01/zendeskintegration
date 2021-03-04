@@ -36,4 +36,11 @@ export interface ZendeskOptions {
      * Coveo JS UI Options
      */
     searchOptions?: any;
+
+    /**
+     * Overrides the Coveo.init function so parameters can be modified or add custom logic
+     * 
+     * by default executes the Coveo.init method
+     */
+    coveoInit?: (root: Promise<HTMLElement>, options: ZendeskOptions) => Promise<void>
 }
