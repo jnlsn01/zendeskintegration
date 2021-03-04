@@ -1,5 +1,5 @@
-agent/bin
-self-service/bin
+src/agent/bin
+src/self-service/bin
 s3
 node_modules
 .idea
@@ -8,4 +8,3 @@ zendesk-package/assets/searchuiextensions
 zendesk-package/assets/zendesk
 zendesk-package/.zat
 zendesk-package/tmp
-
