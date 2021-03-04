@@ -1,4 +1,6 @@
 export class FormHelper {
+    //Meta fields used by zendesk that we ignore for the search and ua.
+    private ignoreFields = ["ticket_form_id", "description_mimetype"];
 
     private form: HTMLFormElement;
 
@@ -12,7 +14,7 @@ export class FormHelper {
     public onChange(callback: (formValues: { [key: string]: string }) => void) {
         if (!this.form) return;
 
-        this.form.addEventListener('input', (e) => {
+        this.form.addEventListener("input", (e) => {
             callback(this.values());
         });
     }
@@ -22,8 +24,8 @@ export class FormHelper {
         let formValues: { [key: string]: string } = {};
         formData.forEach((value, key) => {
             if (_.isString(value)) {
-                let formatedKey = this.formatKey(key)
-                if (formatedKey)
+                let formatedKey = this.formatKey(key);
+                if (formatedKey && !this.ignoreFields.includes(formatedKey))
                     formValues[this.formatKey(key)] = value;
             }
         });
@@ -32,9 +34,8 @@ export class FormHelper {
     }
 
     public onSubmit(callback: (event: MouseEvent) => void) {
-        let submit = this.form.querySelector(`input[type=submit]`) as HTMLFormElement;
-        if (submit)
-            submit.addEventListener("click", callback);
+        let submit = this.form.querySelector(`input[type=submit]`);
+        if (submit) submit.addEventListener("click", callback);
     }
 
     //Formats keys (request[name] -> name)

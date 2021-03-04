@@ -38,9 +38,19 @@ export interface ZendeskOptions {
     searchOptions?: any;
 
     /**
+     * Called before coveoInititialization   
+     */
+    coveoBeforeInitialization?: (root: Promise<HTMLElement>, options: ZendeskOptions) => Promise<void>;
+
+    /**
      * Overrides the Coveo.init function so parameters can be modified or add custom logic
      * 
      * by default executes the Coveo.init method
      */
-    coveoInit?: (root: Promise<HTMLElement>, options: ZendeskOptions) => Promise<void>
+    coveoInititialization?: (root: Promise<HTMLElement>, options: ZendeskOptions) => Promise<void>;
+
+    /**
+     * Called after coveoInititialization
+     */
+    coveoAfterInitialization?: (root: HTMLElement, options: ZendeskOptions) => void;
 }
