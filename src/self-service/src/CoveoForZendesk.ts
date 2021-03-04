@@ -1,4 +1,5 @@
 import { } from "coveo-search-ui";
+import { Utils } from './Utils'
 import { ZendeskOptions } from "./models/ZendeskOptions";
 import { C4ZDComponentHelper } from "./components/C4ZDComponentHelper";
 
@@ -36,12 +37,12 @@ export class CoveoInitializer {
         let searchOptions = this.options.searchOptions;
         if (this.isSearchPage()) {
             if (searchOptions.externalComponents) {
-               searchOptions.externalComponents.push(searchBoxRoot);
+                searchOptions.externalComponents.push(searchBoxRoot);
             } else {
                 searchOptions.externalComponents = [searchBoxRoot];
             }
             if (searchPageRoot)
-                Coveo.init(searchPageRoot, searchOptions);
+                Utils.coveoInit(searchPageRoot, this.options);
         } else {
             Coveo.initSearchbox(searchBoxRoot, this.computeSearchPageUrl());
         }
