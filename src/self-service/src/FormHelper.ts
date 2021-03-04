@@ -31,6 +31,12 @@ export class FormHelper {
         return formValues;
     }
 
+    public onSubmit(callback: (event: MouseEvent) => void) {
+        let submit = this.form.querySelector(`input[type=submit]`) as HTMLFormElement;
+        if (submit)
+            submit.addEventListener("click", callback);
+    }
+
     //Formats keys (request[name] -> name)
     private formatKey(key: string): string | undefined {
         var matches = key.match(/\[(.*?)\]/);

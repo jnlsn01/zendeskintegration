@@ -1,10 +1,12 @@
 import { ZendeskOptions } from "../models/ZendeskOptions";
 import { C4ZDComponent } from "./C4ZDComponent";
+import { CoveoCaseDeflection } from "./CoveoCaseDeflection";
 import { CoveoHostedSearchPage } from "./CoveoHostedSearchPage";
 
 export class C4ZDComponentHelper {
     private static readonly components: C4ZDComponent[] = [
         new CoveoHostedSearchPage(),
+        new CoveoCaseDeflection()
     ]
 
     public static async initComponents(options: ZendeskOptions) {
