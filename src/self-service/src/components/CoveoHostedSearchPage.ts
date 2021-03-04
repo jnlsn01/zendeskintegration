@@ -1,4 +1,4 @@
-import PlatformClient from "@coveord/platform-client";
+import { SearchPageModel } from "@coveord/platform-client";
 import { ZendeskOptions } from "../Index";
 import { Utils } from "../Utils";
 import { C4ZDComponent } from "./C4ZDComponent";
@@ -20,18 +20,25 @@ export class CoveoHostedSearchPage implements C4ZDComponent {
             throw Error("'data-page-name' attribute need to be specified");
         }
 
-        let platform = new PlatformClient({
-            organizationId: options.organizationId,
-            accessToken: options.APIKey,
-        });
-
         //Fetch the search page with the page name
-        let hostedPage = (await platform.searchPages.list({ name: pageName }))[0];
+        let hostedSearchPages = await this.fetchHostedSearchPage(options.APIKey, options.organizationId, pageName);
+        let hostedPage = hostedSearchPages[0];
 
         if (!(hostedPage && hostedPage.html)) {
             throw Error(`No hosted search page found with the name ${pageName}`)
         }
 
         Utils.initCoveoSearchFromHtml(hostedPage.html, element, options.searchOptions);
+    }
+
+    private async fetchHostedSearchPage(token: string, orgId: string, pageName: string): Promise<SearchPageModel[]> {
+        let endpoint = `https://platform.cloud.coveo.com/rest/organizations/${orgId}/pages?name=${pageName}`;
+        let result = await fetch(endpoint, {
+            headers: new Headers({
+                'Authorization': `Bearer ${token}`,
+            }),
+        })
+
+        return await result.json() as SearchPageModel[];
     }
 }
