@@ -8,27 +8,49 @@ export interface ZendeskOptions {
     APIKey: string;
 
     /**
+     * Coveo Organization Id.
+     */
+    organizationId: string;
+
+    /**
      * URL of the search page (optional).
      */
-    searchPageUrl: string;
+    searchPageUrl?: string;
 
     /**
      * HTML Id of the search box (optional).
      */
-    searchBoxId: string;
+    searchBoxId?: string;
 
     /**
      * HTML Id of the search interface (optional).
      */
-    searchPageId: string;
+    searchPageId?: string;
 
     /**
      * Name of the Search Page (URL).
      */
-    searchPageName: string;
+    searchPageName?: string;
 
     /**
      * Coveo JS UI Options
      */
-    searchOptions: any;
+    searchOptions?: any;
+
+    /**
+     * Called before coveoInititialization   
+     */
+    coveoBeforeInitialization?: (root: Promise<HTMLElement>, options: ZendeskOptions) => Promise<void>;
+
+    /**
+     * Overrides the Coveo.init function so parameters can be modified or add custom logic
+     * 
+     * by default executes the Coveo.init method
+     */
+    coveoInititialization?: (root: Promise<HTMLElement>, options: ZendeskOptions) => Promise<void>;
+
+    /**
+     * Called after coveoInititialization
+     */
+    coveoAfterInitialization?: (root: HTMLElement, options: ZendeskOptions) => void;
 }
