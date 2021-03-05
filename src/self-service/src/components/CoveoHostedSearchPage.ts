@@ -30,7 +30,7 @@ export class CoveoHostedSearchPage implements C4ZDComponent {
             return hostedPage.html;
         });
 
-        Utils.initCoveoSearchFromHtml(hostedPageHtml, element, options);
+        await Utils.initCoveoSearchFromHtml(hostedPageHtml, element, options);
     }
 
     private async fetchHostedSearchPage(token: string, orgId: string, pageName: string): Promise<SearchPageModel[]> {
