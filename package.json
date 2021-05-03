@@ -2,7 +2,7 @@
     "author": "Coveo <sandbox_JSUI@coveo.com> (http://source.coveo.com/)",
     "license": "Apache-2.0",
     "name": "coveo-for-zendesk",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Coveo UI Integration within Zendesk",
     "main": "./src/agent/bin/commonjs/CoveoForZendesk.js",
     "types": "./src/bin/typings",
