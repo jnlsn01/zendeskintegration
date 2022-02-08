@@ -10,8 +10,16 @@
   "signedUrls": true,
   "location": {
     "support": {
-      "ticket_sidebar": "https://search.cloud.coveo.com/pages/zendesk",
-      "new_ticket_sidebar": "https://search.cloud.coveo.com/pages/zendesk",
+      "ticket_sidebar": {
+        "url": "https://search.cloud.coveo.com/pages/zendesk",
+        "flexible": true,
+        "autoload": false
+        },
+      "new_ticket_sidebar": {
+        "url": "https://search.cloud.coveo.com/pages/zendesk",
+        "flexible": true,
+        "autoload": false
+        },
       "top_bar": "https://search.cloud.coveo.com/pages/zendesk"
     }
   },
